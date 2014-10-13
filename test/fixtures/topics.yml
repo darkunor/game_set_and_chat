@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  content: MyText
+  title: MyString
   user: 
-  topic: 
+  forum: 
+  description: MyText
 
 two:
-  content: MyText
+  title: MyString
   user: 
-  topic: 
+  forum: 
+  description: MyText

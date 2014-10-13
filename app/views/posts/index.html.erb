@@ -1,7 +1,27 @@
-<h1>Posts</h1>
+<h1>Listing posts</h1>
 
-<ul>
-  <% @posts.each do |post| %>
-    <li><%= post.title %></li>
-  <% end %>
-</ul>
+<table>
+  <tr>
+    <th>Content</th>
+    <th>User</th>
+    <th>Topic</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @posts.each do |post| %>
+  <tr>
+    <td><%= post.content %></td>
+    <td><%= post.user %></td>
+    <td><%= post.topic %></td>
+    <td><%= link_to 'Show', post %></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Post', new_post_path %>
