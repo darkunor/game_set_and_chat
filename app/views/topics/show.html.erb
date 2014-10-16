@@ -1,24 +1,21 @@
 <p id="notice"><%= notice %></p>
+
+<h1>Game, Set and Chat</h1>
+<br>
 <p>
-  <b>Title:</b><br>
+  <%= @topic.user.try(:email) %>
+</p>
+<h2>
   <%= @topic.title %>
-</p>
-
+</h2>
 <p>
-  <b>User:</b>
-  <%= @topic.user %>
-</p>
-
-
-<p>
-  <b>Description:</b><br>
   <%= @topic.description %>
 </p>
 
 
-<%= link_to "Edit", edit_topic_path(@topic) %> |
-    <%= link_to "Destroy Topic", @topic, :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to "View All", topics_path %>
+<button><%= link_to "Edit", edit_topic_path(@topic) %></button>
+    <button><%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete %></button> 
+    <button><%= link_to "View All", topics_path %></button>
   </p>
   <%= link_to 'Back', topics_path %>
 
@@ -35,7 +32,7 @@
     <button><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
   <hr>
   </article>
-<% end %><br><br>
+<% end %><br>
 
 
 <p>Comment</p>
