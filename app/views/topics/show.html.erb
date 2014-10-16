@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
-
 <p>
-  <b>Title:</b>
+  <b>Title:</b><br>
   <%= @topic.title %>
 </p>
 
@@ -12,22 +11,31 @@
 
 
 <p>
-  <b>Description:</b>
+  <b>Description:</b><br>
   <%= @topic.description %>
 </p>
 
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<%= link_to "Edit", edit_topic_path(@topic) %> |
+    <%= link_to "Destroy Topic", @topic, :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to "View All", topics_path %>
+  </p>
+  <%= link_to 'Back', topics_path %>
+
+
 
 <h2>posts</h2>
 <% @topic.posts.each do |post| %>
   <article>
-    <%= post.content %>
-    <%= post.user.try(:email) %>
-
+    <hr>
+    <%= post.user.try(:email) %><br>
+    <%= post.content %><br>
+    <button><%= link_to 'Edit', edit_post_path(post) %></button>
+    <button>quote</button>
+    <button><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+  <hr>
   </article>
-<% end %>
+<% end %><br><br>
 
 
 <p>Comment</p>
@@ -37,9 +45,4 @@
   <%= hidden_field_tag "topic_id", @topic.id %>
   <%= text_area_tag "content" %><br>
   <%= submit_tag %>
-  <p>
-    <%= link_to "Edit", edit_topic_path(@topic) %> |
-    <%= link_to "Destroy Topic", @topic, :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to "View All", topics_path %>
-  </p>
-<% end %>
+  <% end %>
