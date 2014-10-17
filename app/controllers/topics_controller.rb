@@ -1,11 +1,12 @@
 class TopicsController < ApplicationController
-  before_filter :authenticate_user!
-
+  #before_filter :authenticate_user!
+  load_and_authorize_resource
+  
   # GET /topics
   # GET /topics.json
   def index
+    # authorize! :show, @topics
     @topics = Topic.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @topics }
@@ -16,7 +17,7 @@ class TopicsController < ApplicationController
   # GET /topics/1.json
   def show
     @topic = Topic.find(params[:id])
-    
+
 
     respond_to do |format|
       format.html # show.html.erb

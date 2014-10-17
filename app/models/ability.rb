@@ -1,20 +1,28 @@
 class Ability
   include CanCan::Ability
 
+  #cancancan user logged out get this You need to sign in or sign up
+  #before_filter :authenticate_user except admin!
+
   def initialize(user)
     user ||= User.new
     if user.role? :admin
       can :manage, :all
     elsif user.role? :member
-      can [:create, :read, :update], Topic do |t|
+      can [:create, :read], Topic
+      can :update, Topic do |t|
         t.user_id == user.id
       end
+      can [:create, :read], Post
       can :manage, Post do |p|
         p.user_id == user.id
       end
       can :manage, User do |u|
         u.id == user.id
       end
+    else
+      can :read, :all
+      can :create, User
     end
   end
 end 

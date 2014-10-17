@@ -6,5 +6,8 @@ class ApplicationController < ActionController::Base
   #     rootposts#index
   #   end
 
+  rescue_from CanCan::AccessDenied do |exception| 
+    redirect_to root_path, alert: "You can't access this page" 
+  end
 
 end

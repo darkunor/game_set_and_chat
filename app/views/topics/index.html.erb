@@ -1,26 +1,17 @@
 <h1>Forum</h1>
 
-<table class ="table td">
-  <tr>
-    <th class ="table th">Title</th>
-    <th class ="table th">User</th>
-    <th class ="table th">Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @topics.each do |topic| %>
-  <tr>
-    <td><%= link_to topic.title, topic %></td>
-    <td><%= topic.user %></td>
-    <td><%= topic.description %></td>
-    <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-    <td><%= link_to 'Delete', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+
+  <h2><%= link_to topic.title, topic %></h2>
+  <p>posted by <%= topic.user.email %></p>
+  <p><%= topic.description %></p>
+
+  <%= link_to 'Edit', edit_topic_path(topic), class: "btn btn-primary" %>
+  <%= link_to 'Delete', topic, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
 <% end %>
-</table>
 
 <br />
-
+<br>
+<br>
+<br>
 <%= link_to 'Create A Topic', new_topic_path %>

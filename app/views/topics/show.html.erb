@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Game, Set and Chat</h1>
-<br>
 <p>
   <%= @topic.user.try(:email) %>
 </p>
@@ -11,7 +9,7 @@
 <p>
   <%= @topic.description %>
 </p>
-
+<br>
 
 <button><%= link_to "Edit", edit_topic_path(@topic) %></button>
     <button><%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete %></button> 
@@ -26,7 +24,9 @@
   <article>
     <hr>
     <%= post.user.try(:email) %><br>
-    <%= post.content %><br>
+    <%= post.content %>
+    <br>
+    <br>
     <button><%= link_to 'Edit', edit_post_path(post) %></button>
     <button>quote</button>
     <button><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
@@ -42,4 +42,4 @@
   <%= hidden_field_tag "topic_id", @topic.id %>
   <%= text_area_tag "content" %><br>
   <%= submit_tag %>
-  <% end %>
+<% end %>
