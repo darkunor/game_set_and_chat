@@ -13,10 +13,10 @@ class Ability
       can :update, Topic do |t|
         t.user_id == user.id
       end
-      can [:create, :read], Post
       can :manage, Post do |p|
         p.user_id == user.id
       end
+      can [:create, :read], Post
       can :manage, User do |u|
         u.id == user.id
       end
