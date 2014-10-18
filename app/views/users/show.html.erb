@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @user.username %></h2>
+
+<h3>Topics</h3>
+<hr>
+
+<% @user.topics.each do |topic| %>
+  <h4><%= link_to topic.title, topic %></h4>
+  <hr>
+<% end %>
+<br>
+<br>
+<p>
+  <h3>Posts</h3>
+  <% @user.posts.each do |post| %>
+  <p><%= post.content %></p>
+  <p><a href="/topics/<%= post.topic.id %>#post<%= post.id %>">Read post</a></p>
+  <!-- This takes me to a particular post in a topic using an internal anchor (#___) -->
+  <!-- not using post.content as link because will be very long -->
+  <hr>
+<% end %>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
