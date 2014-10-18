@@ -1,11 +1,10 @@
 GameSetAndChat::Application.routes.draw do
 
-  resources :forums
-
-
   devise_for :users
   
-  root to: "home#index"
+  root to: "forums#index"
+
+  resources :forums
   resources :users
   resources :topics
   resources :posts
