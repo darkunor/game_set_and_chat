@@ -33,10 +33,11 @@
 
 
 <p>Comment</p>
-
-<%= form_tag("/posts", method: "post") do %>
-  <%= hidden_field_tag("user_id", current_user.id) %>
-  <%= hidden_field_tag "topic_id", @topic.id %>
-  <%= text_area_tag "content" %><br>
-  <%= submit_tag %>
+<% if current_user %>
+  <%= form_tag("/posts", method: "post") do %>
+    <%= hidden_field_tag("user_id", current_user.id) %>
+    <%= hidden_field_tag "topic_id", @topic.id %>
+    <%= text_area_tag "content" %><br>
+    <%= submit_tag %>
+  <% end %>
 <% end %>
