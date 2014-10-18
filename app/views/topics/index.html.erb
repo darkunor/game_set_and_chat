@@ -1,17 +1,20 @@
 <h1>Forum</h1>
-
+<hr>
 <% @topics.each do |topic| %>
 
   <h2><%= link_to topic.title, topic %></h2>
-  <p>posted by <%= topic.user.email %></p>
+  <p>posted by <%= topic.user.username %></p>
   <p><%= topic.description %></p>
 
   <%= link_to 'Edit', edit_topic_path(topic), class: "btn btn-primary" %>
   <%= link_to 'Delete', topic, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
+<br>
+<br>
+<hr>
+<br>
 <% end %>
 
-<br />
 <br>
-<br>
-<br>
+
+
 <%= link_to 'Create A Topic', new_topic_path %>

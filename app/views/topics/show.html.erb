@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= @topic.user.try(:email) %>
+  <%= link_to @topic.user.try(:username), @topic.user %>
 </p>
 <h2>
   <%= @topic.title %>
@@ -12,19 +12,16 @@
 <br>
 
 <button><%= link_to "Edit", edit_topic_path(@topic) %></button>
-    <button><%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete %></button> 
-    <button><%= link_to "View All", topics_path %></button>
-  </p>
-  <%= link_to 'Back', topics_path %>
+<button><%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete %></button> 
+<button><%= link_to "View All", topics_path %></button>
+<%= link_to 'Back', topics_path %>
 
-
-
-<h2>posts</h2>
+<h2>Posts</h2>
 <% @topic.posts.each do |post| %>
   <article>
     <hr>
-    <%= post.user.try(:email) %><br>
-    <%= post.content %>
+    <%= post.user.try(:username) %><br>
+    <a id="post<%= post.id %>"><%= post.content %></a>
     <br>
     <br>
     <button><%= link_to 'Edit', edit_post_path(post) %></button>
