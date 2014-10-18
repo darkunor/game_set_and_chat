@@ -1,6 +1,7 @@
 class Topic < ActiveRecord::Base
+  attr_accessible :description, :title, :user_id, :forum_id
   belongs_to :user
+  belongs_to :forum
   has_many :posts
   has_many :users, through: :posts
-  attr_accessible :description, :title, :user_id
 end
