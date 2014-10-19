@@ -3,7 +3,7 @@
 <% @topics.each do |topic| %>
 
   <h2><%= link_to topic.title, topic %></h2>
-  <p>posted by <%= topic.user.username %></p>
+  
   <p><%= topic.description %></p>
 
   <%= link_to 'Edit', edit_topic_path(topic), class: "btn btn-primary" %>

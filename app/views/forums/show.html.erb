@@ -1,15 +1,23 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
+<hr>
+<h2>
   <%= @forum.name %>
-</p>
+</h2>
+<hr>
+<h2>Topics</h2>
+<hr>
+<% @forum.topics.each do |topic| %>
+ <h4><%= link_to topic.title, topic %></h4>
+ <p> by <%= topic.user.username %></p>
+<% end %>
+<hr>
+<button><%= link_to 'Edit', edit_forum_path(@forum) %></button>
+<button><%= link_to 'Back', forums_path %></button>
+<hr>
 
-<p>
-  <b>Description:</b>
-  <%= @forum.description %>
-</p>
 
 
-<%= link_to 'Edit', edit_forum_path(@forum) %> |
-<%= link_to 'Back', forums_path %>
+<br>
+<br>
+<br>
+<br>
+<%= link_to 'Create A Topic', new_topic_path %>

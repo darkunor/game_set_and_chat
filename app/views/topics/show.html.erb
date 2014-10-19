@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <%= link_to @topic.user.try(:username), @topic.user %>
-</p>
 <h2>
   <%= @topic.title %>
 </h2>
+<p>
+  by <%= link_to @topic.user.try(:username), @topic.user %>
+</p>
 <p>
   <%= @topic.description %>
 </p>
@@ -15,8 +15,9 @@
 <button><%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete %></button> 
 <button><%= link_to "View All", topics_path %></button>
 <%= link_to 'Back', topics_path %>
-
-<h2>Posts</h2>
+<br>
+<br>
+<h4>Posts</h4>
 <% @topic.posts.each do |post| %>
   <article>
     <hr>

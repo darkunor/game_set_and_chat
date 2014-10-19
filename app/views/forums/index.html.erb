@@ -1,8 +1,13 @@
 <h1>Forums</h1>
 
+<iframe width="560" height="315" src="//www.youtube.com/embed/OKQpnH3RJt0" frameborder="0" allowfullscreen></iframe>
+<br>
+<br>
+<br>
 <table class="table table-striped">
   <tr>
     <th>Name</th>
+    <th>Last post</th>
   </tr>
 
 <% @forums.each do |forum| %>
@@ -10,6 +15,9 @@
     <td>
       <%= link_to forum.name, forum %><br>
       <%= forum.description %>
+    </td>
+    <td>
+      <%#= forum.posts.last %>
     </td>
   </tr>
 <% end %>
