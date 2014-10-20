@@ -28,7 +28,7 @@ class TopicsController < ApplicationController
   # GET /topics/new.json
   def new
     @topic = Topic.new
-
+    @topic.forum_id = params[:forum_id]
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @topic }

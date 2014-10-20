@@ -1,12 +1,13 @@
-<h1>Forums</h1>
+<h2>Topic of the Day</h2>
 
 <iframe width="560" height="315" src="//www.youtube.com/embed/OKQpnH3RJt0" frameborder="0" allowfullscreen></iframe>
 <br>
 <br>
 <br>
+<br>
 <table class="table table-striped">
   <tr>
-    <th>Name</th>
+    <th>Forum</th>
     <th>Last post</th>
   </tr>
 
@@ -17,7 +18,8 @@
       <%= forum.description %>
     </td>
     <td>
-      <%#= forum.posts.last %>
+      <%= link_to forum.posts.last.content, forum.posts.last.topic %><br> by <%= forum.posts.last.user.username %>
+     <!-- sort this out later, this just gets the last element not the one most recently commented on -->
     </td>
   </tr>
 <% end %>

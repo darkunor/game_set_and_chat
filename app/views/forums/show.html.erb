@@ -19,5 +19,5 @@
 
 
 <% if can? :create, Topic %>
-<%= link_to 'Create A Topic', new_topic_path %>
+<%= link_to 'Create A Topic', new_topic_path(forum_id: @forum.id) %>
 <% end %>
