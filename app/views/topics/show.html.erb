@@ -11,18 +11,17 @@
 </p>
 <br>
 
-<button><%= link_to "Edit", edit_topic_path(@topic) %></button>
-<button><%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete %></button> 
-<button><%= link_to "View All", topics_path %></button>
-<%= link_to 'Back', forum_path(@topic.forum) %>
+<%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-primary" %>
+<%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-primary" %> 
+<%= link_to "View All", topics_path, class: "btn btn-primary" %>
 <br>
 <br>
 <h4>Posts</h4>
 <% @topic.posts.each do |post| %>
   <article>
     <hr>
-    <%= post.user.try(:username) %><br>
-    <a id="post<%= post.id %>"><%= post.content %></a>
+    <%= link_to post.user.try(:username), post.user %><br>
+    <a id="post<%= post.id %>" class="no_highlight"><%= post.content %></a>
     <br>
     <br>
     <button><%= link_to 'Edit', edit_post_path(post) %></button>
@@ -35,10 +34,18 @@
 
 <p>Comment</p>
 <% if current_user %>
-  <%= form_tag("/posts", method: "post") do %>
+  <%= form_tag("/posts", method: "post", role: "form") do %>
     <%= hidden_field_tag("user_id", current_user.id) %>
     <%= hidden_field_tag "topic_id", @topic.id %>
-    <%= text_area_tag "content" %><br>
-    <%= submit_tag %>
+
+    <div class="form-group">
+      <div class="col-md-6">
+        <%= text_area_tag("content", "", class: "form-control") %>
+      </div>
+    </div> 
+
+    <div class="col-md-12">
+      <%= button_tag("Submit", class: "btn btn-primary") %>
+    </div>
   <% end %>
 <% end %>
