@@ -4,8 +4,8 @@
 
 <% @users.each do |user| %>
   <h3><%= link_to user.username, user %></h3>
-  <%= link_to 'Edit', edit_user_path(user), class: "btn btn-warning" %>
-  <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+  <%= link_to 'Edit', edit_user_path(user), class: "btn btn-warning" if can? :update, user %>
+  <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" if can? :destroy, user %>
   <hr>
 <% end %>
 

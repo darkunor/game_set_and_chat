@@ -10,14 +10,14 @@
  <p> by <%= topic.user.username %></p>
 <% end %>
 <hr>
+<% if can? :update, @forum %>
 <button><%= link_to 'Edit', edit_forum_path(@forum) %></button>
+<% end %>
+
 <button><%= link_to 'Back', forums_path %></button>
 <hr>
 
 
-
-<br>
-<br>
-<br>
-<br>
+<% if can? :create, Topic %>
 <%= link_to 'Create A Topic', new_topic_path %>
+<% end %>

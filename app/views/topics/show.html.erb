@@ -21,7 +21,7 @@
 <% @topic.posts.each do |post| %>
   <article>
     <hr>
-    <%= link_to @topic.user.try(:username), @topic.user %><br>
+    <%= post.user.try(:username) %><br>
     <a id="post<%= post.id %>"><%= post.content %></a>
     <br>
     <br>

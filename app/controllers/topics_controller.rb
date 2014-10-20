@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  #before_filter :authenticate_user!
+
   load_and_authorize_resource
   
   # GET /topics
@@ -17,7 +17,6 @@ class TopicsController < ApplicationController
   # GET /topics/1.json
   def show
     @topic = Topic.find(params[:id])
-
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,7 +43,7 @@ class TopicsController < ApplicationController
   # POST /topics
   # POST /topics.json
   def create
-    @topic = Topic.new(params[:topic])
+    @topic = current_user.topics.new(params[:topic])
     respond_to do |format|
       if @topic.save
         format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
