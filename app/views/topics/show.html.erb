@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <h2>
   <%= @topic.title %>
@@ -12,12 +12,14 @@
 <br>
 
 <%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-primary" %>
-<%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-primary" %> 
+<%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete, class:  "btn btn-primary" %> 
 <%= link_to "View All", topics_path, class: "btn btn-primary" %>
 <br>
 <br>
 <h4>Posts</h4>
-<% @topic.posts.each do |post| %>
+<% posts = @topic.posts.order("posts.created_at").page(params[:page]).per(10) %>
+
+<% posts.each do |post| %>
   <article>
     <hr>
     <%= link_to post.user.try(:username), post.user %><br>
@@ -25,11 +27,15 @@
     <br>
     <br>
     <button><%= link_to 'Edit', edit_post_path(post) %></button>
-    <button>quote</button>
     <button><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+  
   <hr>
   </article>
+
 <% end %><br>
+
+<%= paginate posts %>
+
 
 
 <p>Comment</p>
