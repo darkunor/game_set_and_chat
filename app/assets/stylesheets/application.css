@@ -13,14 +13,51 @@
  *Had to swap require_self with require_tree so changes in the application CSS will overide boostrap done in order to revert to restore the text on the topic show page to normal text!
  */
 
+#topicsection {
+  width: 100%;
+
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+  }
+
+iframe {
+  float:left;
+
+}
+
+table.table {
+
+  margin-top: 30px;
+}
+
+#mythoughts {
+  float:left;
+  padding-left: 30px;
+  max-width: 500px;
+}
+h2#topicoftheday {
+  background-color: #f9f9f9;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
  .login {
    float: right;
  }
 
- .container {
-   float: right;
+ .container p{
+   max-width: 350px;
  }
-
+#topicsshow p {
+  max-width: 350px;
+}
  .hello {
    float: left;
  }
@@ -29,3 +66,12 @@
   color: #000;
   text-decoration: none;
  }
+
+.pop p {
+  -webkit-animation: pop .4s ease forwards;
+}
+
+@-webkit-keyframes pop {
+    from { font-size: 4px; }
+    to { font-size: 14px; }
+}

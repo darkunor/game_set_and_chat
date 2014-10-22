@@ -25,8 +25,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">House Rules</a></li>
-            <li><a href="#">About</a></li>
+            <li class="active"><a href="/house">House Rules</a></li>
+            <li class="active"><a href="/about">About</a></li>
+            <li><a href="#">Recommended Sites</a></li>
           </ul>
             <% if current_user %>
               <p class="navbar-text navbar-right">Signed in as <a href="#"><%= current_user.username %></a> | <%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
@@ -42,8 +43,10 @@
       </div><!-- /.container-fluid -->
     </nav>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="pop">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
     <%= yield %>
   </div>
 </body>

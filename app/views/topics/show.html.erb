@@ -1,57 +1,63 @@
 
 
-<h2>
-  <%= @topic.title %>
-</h2>
-<p>
-  by <%= link_to @topic.user.try(:username), @topic.user %>
-</p>
-<p>
-  <%= @topic.description %>
-</p>
-<br>
+<div id="topicsshow">
 
-<%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-primary" %>
-<%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete, class:  "btn btn-primary" %> 
-<%= link_to "View All", topics_path, class: "btn btn-primary" %>
-<br>
-<br>
-<h4>Posts</h4>
-<% posts = @topic.posts.order("posts.created_at").page(params[:page]).per(10) %>
+  <h2>
+    <%= @topic.title %>
+  </h2>
+  <p>
+    by <%= link_to @topic.user.try(:username), @topic.user %>
+  </p>
+  <p>
+    <%= @topic.description %>
+  </p>
+  <br>
 
-<% posts.each do |post| %>
-  <article>
-    <hr>
-    <%= link_to post.user.try(:username), post.user %><br>
-    <a id="post<%= post.id %>" class="no_highlight"><%= post.content %></a>
-    <br>
-    <br>
-    <button><%= link_to 'Edit', edit_post_path(post) %></button>
-    <button><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+  <%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-primary" %>
+  <%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete, class:  "btn btn-primary" %> 
+  <%= link_to "View All", topics_path, class: "btn btn-primary" %>
+  <br>
+  <br>
+  <br>
   
-  <hr>
-  </article>
+  <h5>Comment below!</h5>
+  <% posts = @topic.posts.order("posts.created_at").page(params[:page]).per(10) %>
 
-<% end %><br>
+  <% posts.each do |post| %>
+    <article>
+      <hr>
+      <%= link_to post.user.try(:username), post.user %><br>
+      <a id="post<%= post.id %>" class="no_highlight"><%= post.content %></a>
+      <br>
+      <br>
+      <button><%= link_to 'Edit', edit_post_path(post) %></button>
+      <button><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+    
+    <hr>
+    </article>
 
-<%= paginate posts %>
+  <% end %><br>
+
+  <%= paginate posts %>
 
 
 
-<p>Comment</p>
-<% if current_user %>
-  <%= form_tag("/posts", method: "post", role: "form") do %>
-    <%= hidden_field_tag("user_id", current_user.id) %>
-    <%= hidden_field_tag "topic_id", @topic.id %>
+  
+  <% if current_user %>
+    <%= form_tag("/posts", method: "post", role: "form") do %>
+      <%= hidden_field_tag("user_id", current_user.id) %>
+      <%= hidden_field_tag "topic_id", @topic.id %>
 
-    <div class="form-group">
-      <div class="col-md-6">
-        <%= text_area_tag("content", "", class: "form-control") %>
+      <div class="form-group">
+        <div class="col-md-6">
+          <%= text_area_tag("content", "", class: "form-control") %>
+        </div>
+      </div> 
+
+      <div class="col-md-12">
+        <%= button_tag("Submit", class: "btn btn-primary") %>
       </div>
-    </div> 
-
-    <div class="col-md-12">
-      <%= button_tag("Submit", class: "btn btn-primary") %>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
+
+</div>
