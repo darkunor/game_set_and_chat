@@ -82,9 +82,7 @@ h2#topicoftheday {
   text-decoration: none;
  }
 
- div.pop {
-  height:0;
- }
+ 
 
 .pop p {
   -webkit-animation: pop .4s ease forwards;

@@ -56,19 +56,19 @@ class TopicsController < ApplicationController
   end
 
   # PUT /topics/1
-  # PUT /topics/1.json
-  def update
-    @topic = Topic.find(params[:id])
-    respond_to do |format|
-      if @topic.update_attributes(params[:topic])
-        format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @topic.errors, status: :unprocessable_entity }
+    # PUT /topics/1.json
+    def update
+      @topic = Topic.find(params[:id])
+      respond_to do |format|
+        if @topic.update_attributes(params[:topic])
+          format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @topic.errors, status: :unprocessable_entity }
+        end
       end
     end
-  end
 
   # DELETE /topics/1
   # DELETE /topics/1.json
