@@ -15,4 +15,5 @@ GameSetAndChat::Application.routes.draw do
   resources :posts
   resources :about
   resources :house
+  resources :recom
 end
