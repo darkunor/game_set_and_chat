@@ -8,7 +8,8 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="animated lightSpeedIn">Game Set and Chat</h1>
+    <%#= image_tag("logo.jpg") %>
+    <h1 class="animated lightSpeedIn">Game Set and Chat!<small>"The Ultimate Tennis Forum"</small></h1>
     <nav class="navbar navbar-default" role="navigation">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -30,7 +31,7 @@
             <li><a href="#">Recommended Sites</a></li>
           </ul>
             <% if current_user %>
-              <p class="navbar-text navbar-right">Signed in as <a href="#"><%= current_user.username %></a> | <%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
+              <p class="navbar-text navbar-right">Signed in as <%= link_to current_user.username, current_user %> | <%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
               </ul>
             <% else %>
               <ul class="nav navbar-nav navbar-right">

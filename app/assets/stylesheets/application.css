@@ -13,6 +13,13 @@
  *Had to swap require_self with require_tree so changes in the application CSS will overide boostrap done in order to revert to restore the text on the topic show page to normal text!
  */
 
+.signup{
+text-align: center;
+
+}
+
+
+
 #topicsection {
   width: 100%;
 
@@ -42,15 +49,16 @@ table.table {
   padding-left: 30px;
   max-width: 500px;
 }
+
 h2#topicoftheday {
   background-color: #f9f9f9;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
- .login {
-   float: right;
- }
+ 
 
  .container p{
    max-width: 350px;
@@ -58,6 +66,13 @@ h2#topicoftheday {
 #topicsshow p {
   max-width: 350px;
 }
+
+#topicsshow h3 {
+  max-width: 400px;
+} 
+
+
+
  .hello {
    float: left;
  }
@@ -65,6 +80,10 @@ h2#topicoftheday {
  a.no_highlight {
   color: #000;
   text-decoration: none;
+ }
+
+ div.pop {
+  height:0;
  }
 
 .pop p {

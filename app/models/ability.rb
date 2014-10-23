@@ -15,7 +15,7 @@ class Ability
 
       can :manage, :all
 
-    elsif user.role? :member
+    elsif user.role?(:member) && user.persisted? 
 
       # Forum
       cannot :manage, Forum

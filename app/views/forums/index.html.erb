@@ -20,7 +20,7 @@
 <% @forums.each do |forum| %>
   <tr>
     <td>
-      <%= link_to forum.name, forum %><br>
+      <b><%= link_to forum.name, forum %></b><br>
       <%= forum.description %>
     </td>
     <td>
@@ -33,8 +33,8 @@
 <% end %>
 </table>
 
-<br />
+
 
 <% if can? :create, @forum %>
-  <%= link_to 'New Forum', new_forum_path %>
+  <%= link_to 'New Forum', new_forum_path, class: "btn btn-success" %>
 <% end %>

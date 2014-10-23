@@ -6,7 +6,7 @@ class TopicsController < ApplicationController
   # GET /topics.json
   def index
     # authorize! :show, @topics
-    @topics = Topic.all
+    @topics  = Topic.order(:created_at).page(params[:page]).per(5)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @topics }

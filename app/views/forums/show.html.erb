@@ -1,23 +1,26 @@
-<hr>
-<h2>
-  <%= @forum.name %>
-</h2>
-<hr>
+<div class="page-header">
+  <h1><%= @forum.name %></h1>
+</div>
+
 <h2>Topics</h2>
-<hr>
-<% @forum.topics.each do |topic| %>
+
+<% topics = @forum.topics.order("topics.created_at").page(params[:page]).per(2) %>
+
+<% topics.each do |topic| %>
  <h4><%= link_to topic.title, topic %></h4>
  <p> by <%= topic.user.username %></p>
 <% end %>
 <hr>
 <% if can? :update, @forum %>
-<button><%= link_to 'Edit', edit_forum_path(@forum) %></button>
+<%= link_to 'Edit', edit_forum_path(@forum), class: "btn btn-warning" %>
 <% end %>
 
-<button><%= link_to 'Back', forums_path %></button>
+<%= link_to 'Back', forums_path, class: "btn btn-info" %>
 <hr>
 
 
 <% if can? :create, Topic %>
-<%= link_to 'Create A Topic', new_topic_path(forum_id: @forum.id) %>
+<%= link_to 'Create A Topic', new_topic_path(forum_id: @forum.id), class: "btn btn-success" if can? :create, Topic %>
 <% end %>
+
+<p><%= paginate topics %></p>

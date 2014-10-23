@@ -2,9 +2,9 @@
 
 <div id="topicsshow">
 
-  <h2>
+  <h3>
     <%= @topic.title %>
-  </h2>
+  </h3>
   <p>
     by <%= link_to @topic.user.try(:username), @topic.user %>
   </p>
@@ -13,13 +13,12 @@
   </p>
   <br>
 
-  <%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-primary" %>
-  <%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete, class:  "btn btn-primary" %> 
-  <%= link_to "View All", topics_path, class: "btn btn-primary" %>
+  <%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-primary" if can? :update, @topic %>
+  <%= link_to "Delete", @topic, :confirm => 'Are you sure?', :method => :delete, class:  "btn btn-primary" if can? :delete, @topic %> 
   <br>
   <br>
   <br>
-  
+
   <h5>Comment below!</h5>
   <% posts = @topic.posts.order("posts.created_at").page(params[:page]).per(10) %>
 
@@ -30,8 +29,8 @@
       <a id="post<%= post.id %>" class="no_highlight"><%= post.content %></a>
       <br>
       <br>
-      <button><%= link_to 'Edit', edit_post_path(post) %></button>
-      <button><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+      <%= link_to 'Edit', edit_post_path(post), class: "btn btn-warning" if can? :update, post %>
+      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" if can? :delete, post %>
     
     <hr>
     </article>
