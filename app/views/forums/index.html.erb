@@ -22,7 +22,7 @@
     </td>
     <td>
       <%if forum.posts.last %>
-      <%= link_to forum.posts.last.content, forum.posts.last.topic %><br> by <%= forum.posts.last.user.username %>
+      <%= link_to forum.posts.last.topic.title, forum.posts.last.topic %><br> by <%= forum.posts.last.user.username %>
       <%end%>
      
     </td>

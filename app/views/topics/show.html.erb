@@ -18,8 +18,12 @@
   <br>
   <br>
   <br>
-
+  <%if can? :create, :update, @post%>
   <h5>Comment below!</h5>
+   <% else %>
+  <%= link_to "Sign In to comment!", new_user_session_path %>
+   <% end %>
+  
   <% posts = @topic.posts.order("posts.created_at").page(params[:page]).per(10) %>
 
   <% posts.each do |post| %>

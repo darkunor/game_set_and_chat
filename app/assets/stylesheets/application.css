@@ -13,16 +13,20 @@
  *Had to swap require_self with require_tree so changes in the application CSS will overide boostrap done in order to revert to restore the text on the topic show page to normal text!
  */
 
-.signup{
-text-align: center;
+html { 
+   background: url('images/bg.jpg') no-repeat center center fixed; 
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+ }
 
+.signup {
+  text-align: center;
 }
-
-
 
 #topicsection {
   width: 100%;
-
 }
 
 .clearfix:after {
